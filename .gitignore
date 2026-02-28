@@ -1,2 +1,30 @@
 # Claude Code (transitional)
 CLAUDE.md
+
+# Rust
+/target/
+**/*.rs.bk
+
+# Node.js / TypeScript (web/)
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Debug
+*.log

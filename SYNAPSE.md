@@ -30,11 +30,13 @@ Cross-platform Coding Agent built in Rust + TypeScript.
 - `synapse-server` — HTTP + WebSocket API (Axum)
 
 ## Code Style
-- Rust 2021 edition, stable toolchain
+- Rust 2024 edition, stable toolchain (1.93+)
 - `cargo fmt` for formatting, `clippy` for linting
 - No `unwrap()` in library crates — use `Result`/`?`
-- `#[async_trait]` for async trait definitions
-- Prefer `thiserror` for error types
+- No `unsafe` — denied at workspace level
+- No `println!`/`eprintln!` in library crates — use `tracing`
+- `#[async_trait]` for async trait definitions (until native async traits support `Send` ergonomically)
+- Prefer `thiserror` for error types, `anyhow` in binary crate
 - Tests: `#[tokio::test]` for async, `insta` for snapshots
 
 ## Rules

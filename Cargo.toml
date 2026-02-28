@@ -1,0 +1,77 @@
+[workspace]
+members = ["crates/*"]
+resolver = "3"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+repository = "https://github.com/xinquiry/synapse"
+description = "An open-source, extensible Coding Agent"
+
+[workspace.lints.rust]
+unsafe_code = "deny"
+
+[workspace.lints.clippy]
+# Safety
+expect_used = "deny"
+unwrap_used = "deny"
+clone_on_ref_ptr = "deny"
+
+# Code quality
+dbg_macro = "deny"
+print_stdout = "deny"
+print_stderr = "deny"
+todo = "deny"
+wildcard_imports = "deny"
+unused_async = "deny"
+implicit_clone = "deny"
+inefficient_to_string = "deny"
+string_add = "deny"
+needless_pass_by_value = "warn"
+
+# Redundancy
+manual_filter = "deny"
+manual_map = "deny"
+manual_flatten = "deny"
+manual_ok_or = "deny"
+manual_unwrap_or = "deny"
+manual_range_contains = "deny"
+needless_borrow = "deny"
+needless_collect = "deny"
+redundant_clone = "deny"
+redundant_closure = "deny"
+redundant_closure_for_method_calls = "deny"
+uninlined_format_args = "deny"
+unnecessary_lazy_evaluations = "deny"
+unnecessary_to_owned = "deny"
+
+[workspace.dependencies]
+# Internal crates
+synapse-core = { path = "crates/synapse-core" }
+synapse-provider = { path = "crates/synapse-provider" }
+synapse-tools = { path = "crates/synapse-tools" }
+synapse-mcp = { path = "crates/synapse-mcp" }
+synapse-skills = { path = "crates/synapse-skills" }
+synapse-permissions = { path = "crates/synapse-permissions" }
+synapse-tui = { path = "crates/synapse-tui" }
+synapse-server = { path = "crates/synapse-server" }
+
+# External crates
+anyhow = "1.0"
+async-trait = "0.1"
+axum = "0.8"
+clap = { version = "4", features = ["derive"] }
+futures = "0.3"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "2.0"
+tokio = { version = "1", features = ["full"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+uuid = { version = "1", features = ["v4"] }
+
+[profile.release]
+lto = "fat"
+strip = "symbols"
+codegen-units = 1

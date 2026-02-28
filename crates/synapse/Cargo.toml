@@ -1,0 +1,23 @@
+[package]
+name = "synapse"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Synapse - An open-source, extensible Coding Agent"
+
+[lints]
+workspace = true
+
+[[bin]]
+name = "synapse"
+path = "src/main.rs"
+
+[dependencies]
+synapse-core = { workspace = true }
+synapse-tui = { workspace = true }
+synapse-server = { workspace = true }
+anyhow = { workspace = true }
+clap = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
